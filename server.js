@@ -17,6 +17,12 @@ app.use('/books', booksRoutes);
 
 app.use(globalErrorHandler);
 
-app.listen(PORT, () => {
-  console.log(`API Quest server running on port ${PORT}`);
-});
+// Only listen to port if not running on Vercel
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`API Quest server running on port ${PORT}`);
+  });
+}
+
+// Export for Vercel
+export default app;

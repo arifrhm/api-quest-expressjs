@@ -8,7 +8,7 @@ router.get('/', asyncHandler(async (req, res) => {
 }));
 
 router.get('/ping', asyncHandler(async (req, res) => {
-  res.json({ message: 'pong' });
+  res.status(200).json({ success: true });
 }));
 
 router.post('/echo', asyncHandler(async (req, res) => {
