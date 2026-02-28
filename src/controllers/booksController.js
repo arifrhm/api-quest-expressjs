@@ -15,30 +15,16 @@ export async function createBook(req, res) {
 
   const book = store.addBook({
     title: req.body.title.trim(),
-    author: req.body.author.trim()
+    author: req.body.author.trim(),
+    year: req.body.year
   });
 
   res.status(201).json(book);
 }
 
 export async function getBooks(req, res) {
-  const { author, page, limit } = req.query;
-
-  let result;
-
-  if (author) {
-    const books = store.findBooksByAuthor(author);
-    result = { data: books, total: books.length };
-  } else if (page || limit) {
-    const pageNum = parseInt(page) || 1;
-    const limitNum = parseInt(limit) || 10;
-    result = store.paginateBooks(pageNum, limitNum);
-  } else {
-    const books = store.getAllBooks();
-    result = { data: books, total: books.length };
-  }
-
-  res.json(result.data || result);
+  const books = store.getAllBooks();
+  res.json(books);
 }
 
 export async function getBookById(req, res) {

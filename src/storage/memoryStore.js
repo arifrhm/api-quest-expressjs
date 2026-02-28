@@ -8,7 +8,8 @@ class MemoryStore {
     const newBook = {
       id: this.counter++,
       title: book.title,
-      author: book.author
+      author: book.author,
+      year: book.year
     };
     this.books.push(newBook);
     return newBook;
