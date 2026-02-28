@@ -12,15 +12,7 @@ router.get('/ping', asyncHandler(async (req, res) => {
 }));
 
 router.post('/echo', asyncHandler(async (req, res) => {
-  const { message } = req.body;
-
-  if (message === undefined) {
-    return res.status(422).json({
-      detail: 'Message field is required'
-    });
-  }
-
-  res.json({ echo: message });
+  res.json(req.body);
 }));
 
 export default router;
