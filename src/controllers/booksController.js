@@ -23,8 +23,21 @@ export async function createBook(req, res) {
 }
 
 export async function getBooks(req, res) {
-  const books = store.getAllBooks();
-  res.json(books);
+  const { author, page, limit } = req.query;
+
+  let result;
+
+  if (author) {
+    result = store.findBooksByAuthor(author);
+  } else if (page) {
+    const limitNum = limit ? parseInt(limit) : 10;
+    const pageNum = parseInt(page);
+    result = store.paginateBooks(pageNum, limitNum);
+  } else {
+    result = store.getAllBooks();
+  }
+
+  res.json(result);
 }
 
 export async function getBookById(req, res) {
