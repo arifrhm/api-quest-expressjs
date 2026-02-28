@@ -22,7 +22,7 @@ router.post('/token', asyncHandler(async (req, res) => {
   const accessToken = generateAccessToken();
 
   res.json({
-    access_token: accessToken,
+    token: accessToken,
     token_type: 'bearer'
   });
 }));

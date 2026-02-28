@@ -75,19 +75,19 @@ Book object:
 ### Level 5 - Authentication
 ```
 POST /auth/token
-Body: {"username": "admin", "password": "admin"}
+Body: {"username": "admin", "password": "password"}
 ```
 Response:
 ```json
 {
-  "access_token": "...",
+  "token": "...",
   "token_type": "bearer"
 }
 ```
 
 Use the token in Authorization header:
 ```
-Authorization: Bearer <access_token>
+Authorization: Bearer <token>
 ```
 
 ### Level 6 - Search & Pagination
@@ -156,7 +156,7 @@ Or via the Railway dashboard:
 # Get auth token
 TOKEN=$(curl -s -X POST http://localhost:3000/auth/token \
   -H "Content-Type: application/json" \
-  -d '{"username":"admin","password":"admin"}' | jq -r '.access_token')
+  -d '{"username":"admin","password":"password"}' | jq -r '.token')
 
 # Create a book
 curl -X POST http://localhost:3000/books \
