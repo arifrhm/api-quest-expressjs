@@ -49,14 +49,10 @@ class MemoryStore {
     );
   }
 
-  paginateBooks(page = 1, limit = 10) {
+  paginateBooks(page = 1, limit = 10, books = null) {
+    const bookList = books || this.books;
     const offset = (page - 1) * limit;
-    return {
-      data: this.books.slice(offset, offset + limit),
-      page,
-      limit,
-      total: this.books.length
-    };
+    return bookList.slice(offset, offset + limit);
   }
 }
 
