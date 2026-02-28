@@ -8,7 +8,7 @@ function generateToken() {
 }
 
 export function validateCredentials(username, password) {
-  return username === 'admin' && password === 'admin';
+  return username === 'admin' && password === 'password';
 }
 
 export function generateAccessToken() {
