@@ -8,7 +8,7 @@ export function globalErrorHandler(err, req, res, next) {
   console.error('Error:', err);
 
   if (err.type === 'validation') {
-    return res.status(422).json({
+    return res.status(400).json({
       detail: err.message
     });
   }
